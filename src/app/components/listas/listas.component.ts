@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Lista } from 'src/app/models/lista.model';
 import { ListaService } from 'src/app/services/lista.service';
@@ -12,7 +13,8 @@ export class ListasComponent implements OnInit {
 
   constructor(public listaService: ListaService,
     public alertController: AlertController,
-    public toastController: ToastController,) { }
+    public toastController: ToastController,
+    private router: Router) { }
 
   ngOnInit() {}
 
@@ -99,5 +101,11 @@ export class ListasComponent implements OnInit {
     console.log("eliminar", listaItem)
   }
 
+
+  listaSeleccionada(listaItem: Lista){
+    console.log(listaItem);
+    const URL = '/agregar/' + listaItem.id;
+    this.router.navigateByUrl(URL);
+  }
 
 }
