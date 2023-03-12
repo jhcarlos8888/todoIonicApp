@@ -103,7 +103,6 @@ export class ListasComponent implements OnInit {
 
 
   listaSeleccionada(listaItem: Lista){
-    console.log(listaItem);
     const URL = '/agregar/' + listaItem.id;
     this.router.navigateByUrl(URL);
   }

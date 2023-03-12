@@ -59,7 +59,7 @@ export class ListaService {
    * @description Funcion que permite borrar una lista
    * @param {Lista} lista
    */
-  borrarLista(lista:Lista) {
+  borrarLista(lista: Lista) {
     let newLista = this.listas.filter((listaItem) => listaItem.id !== lista.id);
     this.listas = newLista;
     this.guardarStorage();
@@ -69,12 +69,23 @@ export class ListaService {
    * @function editarLista
    * @description Funcion que permite editar el nombre de una lista
    */
-  editLista(lista:Lista) {
+  editLista(lista: Lista) {
     let matchLista = this.listas.find((listaItem) => listaItem.id == lista.id);
     let stringListas: string = JSON.stringify(matchLista)
     localStorage.setItem("listas", stringListas)
     this.guardarStorage();
 
+  }
+
+  /**
+  * @function obtenerLista
+  * @description Funcion que permite retornar una lista por medio
+  * de su ID
+  */
+  obtenerLista(idLista:string | number) {
+    const id = Number(idLista);
+    let lista = this.listas.find((itemLista) => itemLista.id == id);
+    return lista;
   }
 
 }
