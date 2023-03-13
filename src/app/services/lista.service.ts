@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Actividad } from '../models/actividades.model';
 import { Lista } from '../models/lista.model';
 
 @Injectable({
@@ -7,6 +8,7 @@ import { Lista } from '../models/lista.model';
 export class ListaService {
 
   public listas: Lista[] = []; //Variable para almacenas las listas creadas
+  public actividades: Actividad[] = []
 
   constructor() {
     this.cargarStorage();
@@ -86,6 +88,18 @@ export class ListaService {
     const id = Number(idLista);
     let lista = this.listas.find((itemLista) => itemLista.id == id);
     return lista;
+  }
+
+
+  /**
+   * @function editActividad
+   * @description Funcion que permite editar una actividad
+   */
+  editActividad(actividad: Actividad) {
+    let matchActividad = this.actividades.find((actividadDesc) => actividadDesc.descripcion == actividad.descripcion);
+    let stringActividad: string = JSON.stringify(matchActividad)
+    localStorage.setItem("actividades", stringActividad)
+    this.guardarStorage();
   }
 
 }

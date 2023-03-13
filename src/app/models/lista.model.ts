@@ -6,9 +6,9 @@ export class Lista {
     id: number;
     titulo: string;
     creadaEn: Date;
-    //terminadaEn: Date;
+    terminadaEn: string;
     completada: boolean;
-    item: any[];
+    item: Actividad[];
 
     constructor(titulo:string){
         this.titulo = titulo;
@@ -16,6 +16,7 @@ export class Lista {
         this.completada = false;
         this.item = [];
         this.id = new Date().getTime();
+        this.terminadaEn = "";
     }
 
 }
