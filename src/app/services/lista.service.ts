@@ -45,6 +45,7 @@ export class ListaService {
    * todas las listas que fueron creadas anteriormente
    * para que persista la informacion
    */
+
   cargarStorage() {
     const listaStorage = localStorage.getItem("listas")
     if (listaStorage == null) {
@@ -84,7 +85,7 @@ export class ListaService {
   * @description Funcion que permite retornar una lista por medio
   * de su ID
   */
-  obtenerLista(idLista:string | number) {
+  obtenerLista(idLista: string | number) {
     const id = Number(idLista);
     let lista = this.listas.find((itemLista) => itemLista.id == id);
     return lista;
