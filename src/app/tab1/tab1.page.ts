@@ -26,19 +26,28 @@ export class Tab1Page {
     console.log("Clic en el boton Agregar lista")
     let alerta = await this.alertController.create({
       header: "Agregar lista",
+      cssClass: 'custom-alert',
       inputs: [
         {
-          type: "text",
+          cssClass: 'alert-input',
+          type: "textarea",
           name: "titulo",
-          placeholder: "Ingrese el nombre de la lista"
+          placeholder: "Ingrese el nombre de la lista Maximo 40 caracteres",
+          attributes: {
+            maxlength: 40,
+          },
         }
       ],
+      
       buttons: [
+          
         {
+          cssClass: 'boton-cancel',
           text: "Cancelar",
           role: "cancel"
         },
         {
+          cssClass: 'alert-button-confirm',
           text: "Crear",
           handler: (data: any) => {
             let isvalid: boolean = this.validInput(data);
