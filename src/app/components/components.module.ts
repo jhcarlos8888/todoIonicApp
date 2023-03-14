@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ListasComponent } from './listas/listas.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -12,6 +13,7 @@ import { ListasComponent } from './listas/listas.component';
   imports: [
     CommonModule,
     FormsModule,
+    PipesModule
     
   ],
   exports:[

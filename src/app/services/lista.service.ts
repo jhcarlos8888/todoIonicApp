@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Actividad } from '../models/actividades.model';
 import { Lista } from '../models/lista.model';
 
 @Injectable({
@@ -7,6 +8,7 @@ import { Lista } from '../models/lista.model';
 export class ListaService {
 
   public listas: Lista[] = []; //Variable para almacenas las listas creadas
+  public actividades: Actividad[] = []
 
   constructor() {
     this.cargarStorage();
@@ -43,6 +45,7 @@ export class ListaService {
    * todas las listas que fueron creadas anteriormente
    * para que persista la informacion
    */
+
   cargarStorage() {
     const listaStorage = localStorage.getItem("listas")
     if (listaStorage == null) {
@@ -59,7 +62,7 @@ export class ListaService {
    * @description Funcion que permite borrar una lista
    * @param {Lista} lista
    */
-  borrarLista(lista:Lista) {
+  borrarLista(lista: Lista) {
     let newLista = this.listas.filter((listaItem) => listaItem.id !== lista.id);
     this.listas = newLista;
     this.guardarStorage();
@@ -69,12 +72,35 @@ export class ListaService {
    * @function editarLista
    * @description Funcion que permite editar el nombre de una lista
    */
-  editLista(lista:Lista) {
+  editLista(lista: Lista) {
     let matchLista = this.listas.find((listaItem) => listaItem.id == lista.id);
     let stringListas: string = JSON.stringify(matchLista)
     localStorage.setItem("listas", stringListas)
     this.guardarStorage();
 
+  }
+
+  /**
+  * @function obtenerLista
+  * @description Funcion que permite retornar una lista por medio
+  * de su ID
+  */
+  obtenerLista(idLista: string | number) {
+    const id = Number(idLista);
+    let lista = this.listas.find((itemLista) => itemLista.id == id);
+    return lista;
+  }
+
+
+  /**
+   * @function editActividad
+   * @description Funcion que permite editar una actividad
+   */
+  editActividad(actividad: Actividad) {
+    let matchActividad = this.actividades.find((actividadDesc) => actividadDesc.descripcion == actividad.descripcion);
+    let stringActividad: string = JSON.stringify(matchActividad)
+    localStorage.setItem("actividades", stringActividad)
+    this.guardarStorage();
   }
 
 }

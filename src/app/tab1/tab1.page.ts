@@ -26,19 +26,28 @@ export class Tab1Page {
     console.log("Clic en el boton Agregar lista")
     let alerta = await this.alertController.create({
       header: "Agregar lista",
+      cssClass: 'custom-alert',
       inputs: [
         {
-          type: "text",
+          cssClass: 'alert-input',
+          type: "textarea",
           name: "titulo",
-          placeholder: "Ingrese el nombre de la lista"
+          placeholder: "Ingrese el nombre de la lista Maximo 40 caracteres",
+          attributes: {
+            maxlength: 40,
+          },
         }
       ],
+      
       buttons: [
+          
         {
+          cssClass: 'boton-cancel',
           text: "Cancelar",
           role: "cancel"
         },
         {
+          cssClass: 'alert-button-confirm',
           text: "Crear",
           handler: (data: any) => {
             let isvalid: boolean = this.validInput(data);
@@ -88,57 +97,6 @@ export class Tab1Page {
       duration: 2000
     })
     toast.present()
-  }
-
-
-
-  /**
-   * @function eliminarLista
-   * @description Funcion para eliminar lista
-   * @param { Lista } listaItem lista a eliminar
-   */
-  eliminarLista(listaItem: Lista) {
-    this.listaService.borrarLista(listaItem)
-    console.log("eliminar", listaItem)
-  }
-
-
-  /**
-  * @function editarLista
-  * @description Funcion que se ejecuta cuando se presiona la opcion editar
-  */
-  async editarLista(lista: Lista) {
-    let alerta = await this.alertController.create({
-      header: "Edicion de lista",
-      inputs: [
-        {
-          type: "text",
-          name: "titulo",
-          placeholder: "Ingrese el nuevo nombre de lista",
-          value: lista.titulo
-        }
-      ],
-      buttons: [
-        {
-          text: "Cancelar",
-          role: "cancel"
-        },
-        {
-          text: "Editar",
-          handler: (data: any) => {
-            let isvalid: boolean = this.validInput(data);
-            if (isvalid) {
-              let titulo = data.titulo
-              lista.titulo = titulo
-              this.listaService.editLista(lista)
-              this.presentToast("Lista editada correctamente!");
-            }
-          }
-        }
-      ]
-    })
-
-    await alerta.present()
   }
 
 }
