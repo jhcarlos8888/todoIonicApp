@@ -28,21 +28,28 @@ export class ListasComponent implements OnInit {
   */
   async editarLista(lista: Lista) {
     let alerta = await this.alertController.create({
+      cssClass: 'custom-alert',
       header: "Edicion de lista",
       inputs: [
         {
-          type: "text",
+          cssClass: 'alert-input',
+          type: "textarea",
           name: "titulo",
-          placeholder: "Ingrese el nuevo nombre de lista",
-          value: lista.titulo
+          placeholder: "Ingrese el nuevo nombre de lista Maximo 35 caracteres",
+          value: lista.titulo,
+          attributes: {
+            maxlength: 35,
+          },
         }
       ],
       buttons: [
         {
+          cssClass: 'boton-cancel',
           text: "Cancelar",
           role: "cancel"
         },
         {
+          cssClass: 'alert-button-confirm',
           text: "Editar",
           handler: (data: any) => {
             let isvalid: boolean = this.validInput(data);
@@ -60,6 +67,7 @@ export class ListasComponent implements OnInit {
     await alerta.present()
   }
 
+  
 
   /**
    * @function presentToast

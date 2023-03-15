@@ -55,21 +55,28 @@ nombreItem: string = ""
   */
     async editarActividad(actividad:Actividad) {
       let alerta = await this.alertController.create({
+        cssClass: 'custom-alert',
         header: "Editar actividad",
         inputs: [
           {
-            type: "text",
+            cssClass: 'alert-input',
+            type: "textarea",
             name: "titulo",
             placeholder: "Ingrese el nuevo nombre de la actividad",
-            value: actividad.descripcion
+            value: actividad.descripcion,
+            attributes: {
+              maxlength: 100,
+            },
           }
         ],
         buttons: [
           {
+            cssClass: 'boton-cancel',
             text: "Cancelar",
             role: "cancel"
           },
           {
+            cssClass: 'alert-button-confirm',
             text: "Editar",
             handler: (data: any) => {
               let isvalid: boolean = this.validInput(data);

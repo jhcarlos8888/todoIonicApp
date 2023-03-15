@@ -32,9 +32,9 @@ export class Tab1Page {
           cssClass: 'alert-input',
           type: "textarea",
           name: "titulo",
-          placeholder: "Ingrese el nombre de la lista Maximo 40 caracteres",
+          placeholder: "Ingrese el nombre de la lista Maximo 35 caracteres",
           attributes: {
-            maxlength: 40,
+            maxlength: 35,
           },
         }
       ],

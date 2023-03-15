@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>{{lista.titulo}}</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" color="primary" text="Atras">
+      <ion-back-button defaultHref="/" color="primary" text="">
       </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
@@ -15,7 +15,7 @@
       <ion-label class="label-agregarActividad" position="floating" color="primary">
         Nueva actividad
       </ion-label>
-      <ion-input type="text" (keyup.enter)="agregar()" [(ngModel)]="nombreItem" maxlength="95">
+      <ion-input type="text" (keyup.enter)="agregar()" [(ngModel)]="nombreItem" maxlength="100">
       </ion-input>
       <ion-note slot="helper">Ingrese el nombre de la actividad</ion-note>
     </ion-item>
