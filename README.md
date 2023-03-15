@@ -1,6 +1,19 @@
 # todoIonicApp
 App que permite crear lista de tareas teniendo tres estados en el proceso (Por hacer, Realizándose y Terminado)
 
+# Versiones de herramientas utilizadas
+
+Node js : 18.5.0
+
+Ionic: 6.1.9
+
+capacitor: 4.7.0
+# Instalacion y ejecucion servidor local de aplicacion
+
+npm install
+
+ionic serve 
+
 # Instrucciones para generar APK Android
 
 
@@ -37,11 +50,19 @@ Ahora para generar el archivo APK nos dirigimos a la pestaña Build/Build Bundle
 
 Con esto se generara nuestra apk para Android
 
-# Versiones de herramientas utilizadas
 
-Node js : 18.5.0
+# Reconstruir APK con datos actualizados
 
-Ionic: 6.1.9
+No es necesario reinstalar los paquetes anteriores para generar una nueva APK, si queremos generar una nueva APK con los cambios realizados, solo se ejecutan los siguientes comandos
 
-capacitor: 4.7.0
+
+ionic build
+
+npx cap sync
+
+npx cap open android
+
+Esto con el fin de refrescar los cambios que se hubiesen hecho anteriormente en el proyecto
+
+
 
