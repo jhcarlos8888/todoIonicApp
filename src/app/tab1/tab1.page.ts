@@ -25,8 +25,8 @@ export class Tab1Page {
   async AgregarLista() {
     console.log("Clic en el boton Agregar lista")
     let alerta = await this.alertController.create({
-      header: "Agregar lista",
       cssClass: 'custom-alert',
+      header: "Agregar lista",
       inputs: [
         {
           cssClass: 'alert-input',
